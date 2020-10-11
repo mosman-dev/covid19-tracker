@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--bg-dark: #191b23;
+	--bg-darker: #0b0c0f;
+
+	--cases: rgb(212, 164, 92);
+	--recovered: rgb(97, 201, 94);
+	--deaths: rgb(211, 49, 20);
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background: var(--bg-dark);
+	height: 100%;
+	width: 100%;
+	font-size: 1em;
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	color: rgb(230, 230, 230);
+}
+
+h1 {
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 1.3em;
+}
+
+.main-container {
+	width: 100%;
+	height: auto;
+	padding: 10px 20px 10px 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.header-container {
+	background: rgb(38, 38, 48);
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 50px;
+	flex-wrap: wrap;
+}
+
+.title-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.title-container i {
+	margin-right: 10px;
+	font-size: 1.2em;
+}
+
+/* Search */
+.search-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.search-wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.search-wrapper i:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.wrapper {
+	height: 300px;
+}
+
+.menu {
+	visibility: visible;
+	opacity: 1;
+	background: var(--bg-dark);
+	width: 250px;
+	height: 300px;
+	border: 1px solid rgb(230, 230, 230);
+	position: absolute;
+	top: 40px;
+	right: 0px;
+	border-radius: 5px;
+	z-index: 1000;
+	overflow: scroll;
+	transition: 0.3s ease-in-out;
+}
+
+.menu.hidden {
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+}
+
+input,
+select {
+	background: var(--bg-dark);
+	height: 30px;
+	border: 1px solid rgb(230, 230, 230);
+	border-radius: 5px;
+	outline: none;
+	padding: 5px;
+	color: rgb(230, 230, 230);
+	margin-right: 5px;
+}
+
+/* Data Container */
+.data-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+/* Cases Overview */
+
+.cases-container {
+	min-width: 420px;
+	margin: 0 80px 0 30px;
+}
+
+.country-data {
+	height: 350px;
+	width: 100%;
+	overflow: scroll;
+	border: 1px solid rgb(230, 230, 230);
+	border-radius: 5px;
+}
+
+.country-data .table {
+	width: 100%;
+}
+
+.country-data .table td {
+	padding: 5px;
+	border: none;
+}
+
+tbody tr:nth-of-type(odd) {
+	background-color: #2f3342;
+}
+
+.table-cases-number {
+	text-align: right;
+}
+
+.component-title {
+	font-size: 0.9em;
+	font-weight: 400;
+	text-transform: uppercase;
+	padding: 5px 0;
+}
+
+.tc {
+	text-align: center;
+}
+
+.bold-700 {
+	font-weight: 700;
+}
+
+.chart-container {
+	margin-top: 20px;
+	min-width: 100%;
+}
+
+.linear-chart {
+	height: 250px;
+	width: 100%;
+}
+
+/* Interactive */
+
+.interactive-container {
+	width: 100%;
+	padding: 10px 27px;
+}
+
+.stat-card-container {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.stat-card-container > div.stat-card:not(:last-child) {
+	margin-right: 20px;
+}
+
+.stat-card {
+	border: 2px solid transparent;
+	border-radius: 10px;
+	padding: 15px;
+	width: 220px;
+	text-align: center;
+}
+
+#cases,
+#recovered,
+#deaths {
+	transition: 0.3s ease-in-out;
+}
+#cases:hover,
+#recovered:hover,
+#deaths:hover {
+	cursor: pointer;
+}
+
+#cases:hover,
+#cases.selected {
+	border-color: var(--cases);
+}
+
+#recovered:hover,
+#recovered.selected {
+	border-color: var(--recovered);
+}
+
+#deaths:hover,
+#deaths.selected {
+	border-color: var(--deaths);
+}
+
+.card-title {
+	text-transform: uppercase;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.card-cases-total,
+.card-recovered-total,
+.card-deaths-total {
+	font-size: 1.8em;
+	margin-bottom: 10px;
+}
+
+.card-cases-total {
+	color: var(--cases);
+}
+
+.card-recovered-total {
+	color: var(--recovered);
+}
+
+.card-deaths-total {
+	color: var(--deaths);
+}
+
+/* Map */
+
+.map-container {
+	margin-top: 30px;
+	padding: 20px 0px;
+	width: 100%;
+}
+
+.map-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 5px;
+}
+
+.update-date {
+	font-size: 0.8em;
+	text-align: right;
+}
+
+#map {
+	width: 100%;
+	height: 450px;
+	border: 1px solid #fff;
+	border-radius: 5px;
+}
+
+.leaflet-tile {
+	filter: hue-rotate(180deg) grayscale(100%) invert(100%) brightness(100%);
+}
+
+.info-name {
+	font-weight: 800;
+}
+
+/* Media Queries */
+
+@media only screen and (min-width: 591px) and (max-width: 1224px) {
+	.data-container {
+		flex-wrap: wrap-reverse;
+	}
+
+	.cases-container {
+		margin: 0;
+		width: 100%;
+		padding: 0 30px;
+	}
+
+	.stat-card-container > div.stat-card:not(:last-child) {
+		margin-right: 0px;
+		margin-bottom: 10px;
+	}
+}
+
+@media only screen and (max-width: 590px) {
+	.header-container {
+		justify-content: center;
+	}
+	.title-container {
+		margin-bottom: 10px;
+	}
+	.data-container {
+		flex-wrap: wrap-reverse;
+	}
+	.cases-container {
+		margin: 0;
+		min-width: 100%;
+		padding: 0 10px;
+	}
+	.stat-card-container > div.stat-card:not(:last-child) {
+		margin-right: 0px;
+		margin-bottom: 10px;
+	}
+}

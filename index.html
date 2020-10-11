@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>COVID-19 | Tracker</title>
+		<!-- Font Awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+			integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+			crossorigin="anonymous"
+		/>
+
+		<!-- Leaflet CSS -->
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+			crossorigin=""
+		/>
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="./styles.css" />
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="header-container">
+			<div class="title-container">
+				<i class="fas fa-virus"></i>
+				<h1>COVID-19 Tracker</h1>
+			</div>
+
+			<!-- Search -->
+			<div class="search-container">
+				<div class="search-wrapper">
+					<select id="countries"></select>
+
+					<!-- Future: Create Custom Dropdown -->
+					<!-- <input
+						list="countries"
+						class="search"
+						type="text"
+						name="country"
+						placeholder="Select or enter country"
+					/> -->
+					<!-- <i class="fas fa-chevron-circle-down icon fa-lg"></i>
+					<div class="menu hidden"></div> -->
+				</div>
+			</div>
+		</div>
+		<div class="main-container">
+			<!-- Data Container -->
+			<div class="data-container">
+				<!-- Cases Overview -->
+				<div class="cases-container">
+					<!-- Cases by Country -->
+					<div class="cases-by-country">
+						<div class="component-title tc">Live Cases (by Country)</div>
+						<div class="country-data">
+							<table class="table table-striped">
+								<tbody id="table-data"></tbody>
+							</table>
+						</div>
+					</div>
+
+					<!-- Worldwide Chart -->
+					<div class="chart-container">
+						<div class="component-title tc">
+							Worldwide (<span class="cases-type">Cases</span> &Delta;)
+						</div>
+						<div class="linear-chart">
+							<canvas id="myChart"></canvas>
+						</div>
+					</div>
+				</div>
+
+				<!-- Interactive Container -->
+				<div class="interactive-container">
+					<!-- Stat Cards -->
+					<div class="stat-card-container">
+						<!-- Cases Card -->
+						<div
+							id="cases"
+							class="stat-card selected"
+							onclick="changeDataSelection('cases')"
+						>
+							<div class="card-body">
+								<div class="card-title">Coronavirus Cases</div>
+								<div class="card-cases-total">0</div>
+								<div class="card-cases-delta">0</div>
+							</div>
+						</div>
+
+						<!-- Recovered Card -->
+						<div
+							id="recovered"
+							class="stat-card"
+							onclick="changeDataSelection('recovered')"
+						>
+							<div class="card-body">
+								<div class="card-title">Recovered</div>
+								<div class="card-recovered-total">0</div>
+								<div class="card-recovered-delta">0</div>
+							</div>
+						</div>
+
+						<!-- Deaths Card -->
+						<div
+							id="deaths"
+							class="stat-card"
+							onclick="changeDataSelection('deaths')"
+						>
+							<div class="card-body">
+								<div class="card-title">Deaths</div>
+								<div class="card-deaths-total counter">0</div>
+								<div class="card-deaths-delta">0</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Map -->
+					<div class="map-container">
+						<div class="map-header">
+							<div class="component-title">COVID-19 Map of Cases</div>
+							<span class="update-date">Last Updated April 09, 2020</span>
+						</div>
+						<div id="map"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Scripts -->
+
+		<!-- Numeral JS | Formatting & Manipulating Numbers -->
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/numeral@2.0.6/numeral.min.js"
+		></script>
+
+		<!-- Moment JS | Date Format/Manipulator -->
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"
+		></script>
+
+		<!-- Leaflet JS | Interactive Maps -->
+		<script
+			src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+			crossorigin=""
+			type="text/javascript"
+		></script>
+
+		<!-- Chart JS -->
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"
+		></script>
+
+		<!-- Custom JS -->
+		<script type="text/javascript" src="./map.js"></script>
+		<script type="text/javascript" src="./chart.js"></script>
+		<script type="text/javascript" src="./main.js"></script>
+	</body>
+</html>
